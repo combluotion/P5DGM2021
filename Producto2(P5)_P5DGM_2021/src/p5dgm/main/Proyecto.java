@@ -2,6 +2,7 @@ package p5dgm.main;
 
 
 import java.util.Date;
+import javax.xml.bind.annotation.XmlRootElement;
 
 public class Proyecto {
 
