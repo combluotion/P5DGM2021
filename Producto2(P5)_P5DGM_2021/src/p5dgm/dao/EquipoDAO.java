@@ -1,7 +1,10 @@
 package p5dgm.dao;
 
-import p5dgm.main.Equipo;
+import java.util.List;
 
-public interface EquipoDAO extends DAO<Equipo> {
+import p5dgm.main.ListaEquipo;
+
+public interface EquipoDAO extends DAO<ListaEquipo> {
+
 		
 }

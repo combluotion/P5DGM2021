@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<java version="15.0.1" class="java.beans.XMLDecoder">
+ <object class="p5dgm.main.Equipo" id="Equipo0">
+  <void class="p5dgm.main.Equipo" method="getField">
+   <string>id</string>
+   <void method="set">
+    <object idref="Equipo0"/>
+    <int>2</int>
+   </void>
+  </void>
+  <void class="p5dgm.main.Equipo" method="getField">
+   <string>nombre</string>
+   <void method="set">
+    <object idref="Equipo0"/>
+    <string>gerard</string>
+   </void>
+  </void>
+  <void class="p5dgm.main.Equipo" method="getField">
+   <string>fechaNacimiento</string>
+   <void method="set">
+    <object idref="Equipo0"/>
+    <object class="java.util.Date">
+     <long>-2302218000000</long>
+    </object>
+   </void>
+  </void>
+  <void class="p5dgm.main.Equipo" method="getField">
+   <string>direccion</string>
+   <void method="set">
+    <object idref="Equipo0"/>
+    <string>isabel</string>
+   </void>
+  </void>
+  <void class="p5dgm.main.Equipo" method="getField">
+   <string>telefono</string>
+   <void method="set">
+    <object idref="Equipo0"/>
+    <string>456</string>
+   </void>
+  </void>
+  <void class="p5dgm.main.Equipo" method="getField">
+   <string>delegacion</string>
+   <void method="set">
+    <object idref="Equipo0"/>
+    <string>89</string>
+   </void>
+  </void>
+ </object>
+</java>

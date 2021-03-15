@@ -1,12 +1,6 @@
 package p5dgm.main;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Date;
-import java.util.Scanner;
-
-import p5dgm.dao.EquipoDAO;
-import p5dgm.dao.xml.XMLEquipoDAO;
-
 
 public class Equipo {
 
@@ -42,9 +36,6 @@ public class Equipo {
 	public Equipo() {
 		
 	};
-	
-	
-
 
 	public int getId() {
 		return id;
