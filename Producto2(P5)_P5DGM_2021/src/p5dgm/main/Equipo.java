@@ -9,15 +9,25 @@ public class Equipo {
 	public String direccion;
 	public String telefono;
 	public String delegacion;
+	public Proyecto proyecto;
 	
+	public Proyecto getProyecto() {
+		return proyecto;
+	}
+
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
+	}
+
 	public Equipo (int id, String nombre, Date fechaNacimiento, String direccion,
-			String telefono, String delegacion){
+			String telefono, String delegacion, Proyecto proyecto){
 		this.id = id;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.delegacion = delegacion;
+		this.proyecto = proyecto;
 	}
 	
 	public int getId() {
