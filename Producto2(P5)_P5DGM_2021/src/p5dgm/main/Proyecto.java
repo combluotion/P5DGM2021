@@ -4,6 +4,7 @@ package p5dgm.main;
 import java.util.Date;
 import javax.xml.bind.annotation.XmlRootElement;
 
+@XmlRootElement
 public class Proyecto {
 
 	public int idProyecto;
