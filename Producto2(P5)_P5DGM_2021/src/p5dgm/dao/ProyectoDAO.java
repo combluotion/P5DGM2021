@@ -1,8 +1,8 @@
 package p5dgm.dao;
 
-import p5dgm.main.Proyecto;
+import p5dgm.main.ListaProyecto;
 
-public interface ProyectoDAO extends DAO<Proyecto> {
+public interface ProyectoDAO extends DAO<ListaProyecto> {
 		
 }
 

@@ -11,9 +11,26 @@ public class Proyecto {
 	public String pais;
 	public Date fechaInicio;
 	public Date fechaFin;
-	public float financiacionAportada;
-	public List<Equipo> MiembrosEquipo;
+	//public float financiacionAportada;
+
 	
+	public Proyecto (int id, String nombreProyecto, String tipoProyecto, String pais,
+			Date fechaInicio, Date fechaFin/*, float financiacionAportada*/) {
+		
+		this.id = id;
+		this.nombreProyecto = nombreProyecto;
+		this.tipoProyecto = tipoProyecto;
+		this.pais = pais;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		//this.financiacionAportada = financiacionAportada;
+	
+	}
+	
+	public Proyecto()
+	{
+		
+	}
 	
 	public int getId() {
 		return id;
@@ -23,12 +40,6 @@ public class Proyecto {
 	}
 	public String getNombreProyecto() {
 		return nombreProyecto;
-	}
-	public List<Equipo> getMiembrosEquipo() {
-		return MiembrosEquipo;
-	}
-	public void setMiembrosEquipo(List<Equipo> miembrosEquipo) {
-		MiembrosEquipo = miembrosEquipo;
 	}
 	public void setNombreProyecto(String nombreProyecto) {
 		this.nombreProyecto = nombreProyecto;
@@ -57,12 +68,12 @@ public class Proyecto {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	public float getFinanciacionAportada() {
+	/*public float getFinanciacionAportada() {
 		return financiacionAportada;
 	}
 	public void setFinanciacionAportada(float financiacionAportada) {
 		this.financiacionAportada = financiacionAportada;
-	}
+	}*/
 
 	public Proyecto GuardarProyecto() {
 		return this;
