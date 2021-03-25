@@ -1,17 +1,15 @@
 package p5dgm.dao;
 
-import java.util.List;
-
-
+import java.io.IOException;
 
 public interface DAO <T> {
 
-	void insertar(T a);
+	void insertar(T a) throws IOException;
 		
-	void modificar(T a);
+	void modificar(T a) throws IOException;
 		
-	void eliminar(T a);
+	void eliminar(T a) throws IOException;
 		
-	T obtener(int id);
+	T obtener(int id) throws IOException;
 		
 }

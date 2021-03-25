@@ -1,155 +1,101 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="15.0.1" class="java.beans.XMLDecoder">
- <object class="p5dgm.main.ListaEquipo" id="ListaEquipo0"/>
-<void class="p5dgm.main.Equipo" method="getField">
- <string>id</string>
- <void method="set">
-  <object class="p5dgm.main.Equipo" id="Equipo0">
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>nombre</string>
-    <void method="set">
-     <object idref="Equipo0"/>
-     <string>Gerard</string>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>fechaNacimiento</string>
-    <void method="set">
-     <object idref="Equipo0"/>
-     <object class="java.util.Date">
-      <long>821746800000</long>
-     </object>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>direccion</string>
-    <void method="set">
-     <object idref="Equipo0"/>
-     <string>Isabel</string>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>telefono</string>
-    <void method="set">
-     <object idref="Equipo0"/>
-     <string>638465</string>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>delegacion</string>
-    <void method="set">
-     <object idref="Equipo0"/>
-     <string>ripo</string>
-    </void>
-   </void>
-  </object>
-  <int>1</int>
- </void>
-</void>
-<void class="p5dgm.main.Equipo" method="getField">
- <string>id</string>
- <void method="set">
-  <object class="p5dgm.main.Equipo" id="Equipo1">
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>nombre</string>
-    <void method="set">
-     <object idref="Equipo1"/>
-     <string>Mireia</string>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>fechaNacimiento</string>
-    <void method="set">
-     <object idref="Equipo1"/>
-     <object class="java.util.Date">
-      <long>934668000000</long>
-     </object>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>direccion</string>
-    <void method="set">
-     <object idref="Equipo1"/>
-     <string>Gata</string>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>telefono</string>
-    <void method="set">
-     <object idref="Equipo1"/>
-     <string>654654</string>
-    </void>
-   </void>
-   <void class="p5dgm.main.Equipo" method="getField">
-    <string>delegacion</string>
-    <void method="set">
-     <object idref="Equipo1"/>
-     <string>Alicante</string>
-    </void>
-   </void>
-  </object>
-  <int>3</int>
- </void>
-</void>
-<void class="p5dgm.main.ListaEquipo" id="Field0" method="getField">
- <string>list</string>
- <void id="ArrayList0" method="get">
-  <object idref="ListaEquipo0"/>
+<java version="15.0.2" class="java.beans.XMLDecoder">
+ <object class="java.util.ArrayList">
   <void method="add">
-   <object class="p5dgm.main.Equipo" id="Equipo2">
+   <object class="p5dgm.main.Equipo" id="Equipo0">
     <void class="p5dgm.main.Equipo" method="getField">
      <string>id</string>
      <void method="set">
-      <object idref="Equipo2"/>
-      <int>2</int>
+      <object idref="Equipo0"/>
+      <int>1</int>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>nombre</string>
      <void method="set">
-      <object idref="Equipo2"/>
-      <string>PACO</string>
+      <object idref="Equipo0"/>
+      <string>GERARD</string>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>fechaNacimiento</string>
      <void method="set">
-      <object idref="Equipo2"/>
+      <object idref="Equipo0"/>
       <object class="java.util.Date">
-       <long>603414000000</long>
+       <long>821746800000</long>
       </object>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>direccion</string>
      <void method="set">
-      <object idref="Equipo2"/>
-      <string>tata</string>
+      <object idref="Equipo0"/>
+      <string>CALLE MAYOR</string>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>telefono</string>
      <void method="set">
-      <object idref="Equipo2"/>
-      <string>123</string>
+      <object idref="Equipo0"/>
+      <string>605763421</string>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>delegacion</string>
      <void method="set">
-      <object idref="Equipo2"/>
-      <string>432</string>
+      <object idref="Equipo0"/>
+      <string>RIPOLLET</string>
      </void>
     </void>
    </object>
   </void>
   <void method="add">
-   <object idref="Equipo1"/>
+   <object class="p5dgm.main.Equipo" id="Equipo1">
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>id</string>
+     <void method="set">
+      <object idref="Equipo1"/>
+      <int>2</int>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>nombre</string>
+     <void method="set">
+      <object idref="Equipo1"/>
+      <string>PACO</string>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>fechaNacimiento</string>
+     <void method="set">
+      <object idref="Equipo1"/>
+      <object class="java.util.Date">
+       <long>608421600000</long>
+      </object>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>direccion</string>
+     <void method="set">
+      <object idref="Equipo1"/>
+      <string>CALLE MENOR</string>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>telefono</string>
+     <void method="set">
+      <object idref="Equipo1"/>
+      <string>686345231</string>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>delegacion</string>
+     <void method="set">
+      <object idref="Equipo1"/>
+      <string>BARCELONA</string>
+     </void>
+    </void>
+   </object>
   </void>
-  <void method="add">
-   <object idref="Equipo0"/>
-  </void>
- </void>
-</void>
-<void idref="ArrayList0"/>
+ </object>
 </java>

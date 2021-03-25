@@ -1,11 +1,12 @@
 package p5dgm.main;
 
+import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.InputMismatchException;
-import java.util.List;
 import java.util.Scanner;
+
 import p5dgm.dao.EquipoDAO;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.dao.xml.XMLEquipoDAO;
@@ -13,10 +14,8 @@ import p5dgm.dao.xml.XMLProyectoDAO;
 
 public class Main {
 
-	public static void main(String[] args) {
-		System.out.println("Buenos días P5DGM2021\n");
-		ListaEquipo lista = new ListaEquipo();
-		ListaProyecto listaProyecto = new ListaProyecto();
+	public static void main(String[] args) throws IOException {
+		System.out.println("Buenos dï¿½as P5DGM2021\n");
 		Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
@@ -37,15 +36,16 @@ public class Main {
                     case 1:
                         System.out.println("Has seleccionado la opcion 1");
                         EquipoDAO DAO = new XMLEquipoDAO();
-                        lista = nuevoEquipo(lista);
-                        DAO.insertar(lista);
+                        Equipo nuevo = nuevoEquipo();
+                        DAO.insertar(nuevo);
                         break;
+                       /*
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
                         ProyectoDAO proyectoDAO = new XMLProyectoDAO();
                         listaProyecto = NuevoProyecto(listaProyecto);
                         proyectoDAO.insertar(listaProyecto);
-                        break;
+                        break;*/
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");
                         break;
@@ -53,17 +53,17 @@ public class Main {
                         salir = true;
                         break;
                     default:
-                        System.out.println("Solo números entre 1 y 4");
+                        System.out.println("Solo nï¿½meros entre 1 y 4");
                 }
             } catch (InputMismatchException e) {
-                System.out.println("Debes insertar un número");
+                System.out.println("Debes insertar un nï¿½mero");
                 sn.next();
             }
         }
 	}
 	
 	
-	public static ListaEquipo nuevoEquipo(ListaEquipo lista) {
+	public static Equipo nuevoEquipo() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Introduzca id: ");
 		int id = Integer.parseInt(scan.nextLine());
@@ -87,8 +87,7 @@ public class Main {
 		/*System.out.println("Introduzca id de proyecto: ");
 		String proyecto = scan.nextLine();*/
 		Equipo equipo = new Equipo(id, nombre, fechaNacimiento, direccion, telefono, delegacion);
-		lista.add(equipo);
-		return lista;
+		return equipo;
 	}
 	
 	public static ListaProyecto NuevoProyecto(ListaProyecto listaProyecto) {
