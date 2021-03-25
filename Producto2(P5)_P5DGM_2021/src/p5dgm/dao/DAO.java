@@ -8,7 +8,7 @@ public interface DAO <T> {
 		
 	void modificar(T a) throws IOException;
 		
-	void eliminar(T a) throws IOException;
+	void eliminar(int id) throws IOException;
 		
 	T obtener(int id) throws IOException;
 		

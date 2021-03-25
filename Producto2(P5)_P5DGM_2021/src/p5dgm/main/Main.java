@@ -23,9 +23,9 @@ public class Main {
         while (!salir) {
  
             System.out.println("1. Registrar nuevo miembro del equipo.");
-            System.out.println("2. Registrar nuevo Proyecto");
-            System.out.println("3. Opcion 3");
-            System.out.println("4. Salir");
+            System.out.println("2. Modificar miembro del equipo");
+            System.out.println("3. Eliminar miembro equipo");
+            System.out.println("8. Salir");
  
             try {
  
@@ -35,21 +35,26 @@ public class Main {
                 switch (opcion) {
                     case 1:
                         System.out.println("Has seleccionado la opcion 1");
-                        EquipoDAO DAO = new XMLEquipoDAO();
+                        EquipoDAO DAOnuevo = new XMLEquipoDAO();
                         Equipo nuevo = nuevoEquipo();
-                        DAO.insertar(nuevo);
+                        DAOnuevo.insertar(nuevo);
                         break;
-                       /*
+                       
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
-                        ProyectoDAO proyectoDAO = new XMLProyectoDAO();
-                        listaProyecto = NuevoProyecto(listaProyecto);
-                        proyectoDAO.insertar(listaProyecto);
-                        break;*/
+                        EquipoDAO DAOmodificar = new XMLEquipoDAO();
+                        Equipo modificar  = modificarEquipo();
+                        DAOmodificar.modificar(modificar);
+                        break;
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");
+                        EquipoDAO DAOeliminar = new XMLEquipoDAO();
+                        Scanner scan = new Scanner(System.in);
+                		System.out.println("Introduzca el id a eliminar: ");
+                		int id = Integer.parseInt(scan.nextLine());	
+                		DAOeliminar.eliminar(id);
                         break;
-                    case 4:
+                    case 8:
                         salir = true;
                         break;
                     default:
@@ -89,6 +94,35 @@ public class Main {
 		Equipo equipo = new Equipo(id, nombre, fechaNacimiento, direccion, telefono, delegacion);
 		return equipo;
 	}
+	
+	public static Equipo modificarEquipo() {
+		//Introducir ID a modificar e introducir nuevos valores.
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Introduzca el id a modificar: ");
+		int id = Integer.parseInt(scan.nextLine());
+		System.out.println("Introduzca nuevos nombre y apellidos: ");
+		String nombre = scan.nextLine();
+		System.out.println("Introduzca nueva fecha de nacimiento(dd/MM/yyyy): ");
+		String fecha = scan.nextLine();
+		Date fechaNacimiento = null;
+		try {
+			fechaNacimiento = new SimpleDateFormat("dd/MM/yyyy").parse(fecha);
+		} 
+		catch (ParseException e) {
+			System.out.println("ParseException occured: formato de fecha incorrecto");
+		}
+		System.out.println("Introduzca nueva direccion: ");
+		String direccion = scan.nextLine();
+		System.out.println("Introduzca nuevo telefono: ");
+		String telefono = scan.nextLine();
+		System.out.println("Introduzca nueva delegacion: ");
+		String delegacion = scan.nextLine();
+		/*System.out.println("Introduzca id de proyecto: ");
+		String proyecto = scan.nextLine();*/
+		Equipo equipo = new Equipo(id, nombre, fechaNacimiento, direccion, telefono, delegacion);
+		return equipo;
+	}
+	
 	
 	public static ListaProyecto NuevoProyecto(ListaProyecto listaProyecto) {
 		Scanner scan = new Scanner(System.in);

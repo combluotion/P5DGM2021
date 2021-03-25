@@ -39,7 +39,7 @@ public class XMLProyectoDAO implements ProyectoDAO {
 	}
 
 	@Override
-	public void eliminar(ListaProyecto a) {
+	public void eliminar(int id) {
 		// TODO Auto-generated method stub
 		
 	}
