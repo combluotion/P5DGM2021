@@ -25,8 +25,15 @@ public class Main {
             System.out.println("1. Registrar nuevo miembro del equipo.");
             System.out.println("2. Modificar miembro del equipo");
             System.out.println("3. Eliminar miembro equipo");
-            System.out.println("8. Salir");
- 
+            /*
+            System.out.println("1. Registrar nuevo miembro del equipo.");
+            System.out.println("2. Modificar miembro del equipo");
+            System.out.println("3. Eliminar miembro equipo");
+            System.out.println("1. Registrar nuevo miembro del equipo.");
+            System.out.println("2. Modificar miembro del equipo");
+            System.out.println("3. Eliminar miembro equipo");
+            System.out.println("13. Salir");
+ 			*/
             try {
  
                 System.out.println("Escribe una de las opciones");
@@ -54,11 +61,18 @@ public class Main {
                 		int id = Integer.parseInt(scan.nextLine());	
                 		DAOeliminar.eliminar(id);
                         break;
+                        /*
+                    case 4:
+                    case 5:
+                    case 6:
+                    case 7:
                     case 8:
+                    case 9:*/
+                    case 10:
                         salir = true;
                         break;
                     default:
-                        System.out.println("Solo n�meros entre 1 y 4");
+                        System.out.println("Solo numeros entre 1 y 4");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Debes insertar un n�mero");

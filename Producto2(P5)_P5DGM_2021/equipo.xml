@@ -7,68 +7,20 @@
      <string>id</string>
      <void method="set">
       <object idref="Equipo0"/>
-      <int>1</int>
-     </void>
-    </void>
-    <void class="p5dgm.main.Equipo" method="getField">
-     <string>nombre</string>
-     <void method="set">
-      <object idref="Equipo0"/>
-      <string>GERARD</string>
-     </void>
-    </void>
-    <void class="p5dgm.main.Equipo" method="getField">
-     <string>fechaNacimiento</string>
-     <void method="set">
-      <object idref="Equipo0"/>
-      <object class="java.util.Date">
-       <long>821746800000</long>
-      </object>
-     </void>
-    </void>
-    <void class="p5dgm.main.Equipo" method="getField">
-     <string>direccion</string>
-     <void method="set">
-      <object idref="Equipo0"/>
-      <string>CALLE MAYOR</string>
-     </void>
-    </void>
-    <void class="p5dgm.main.Equipo" method="getField">
-     <string>telefono</string>
-     <void method="set">
-      <object idref="Equipo0"/>
-      <string>605763421</string>
-     </void>
-    </void>
-    <void class="p5dgm.main.Equipo" method="getField">
-     <string>delegacion</string>
-     <void method="set">
-      <object idref="Equipo0"/>
-      <string>RIPOLLET</string>
-     </void>
-    </void>
-   </object>
-  </void>
-  <void method="add">
-   <object class="p5dgm.main.Equipo" id="Equipo1">
-    <void class="p5dgm.main.Equipo" method="getField">
-     <string>id</string>
-     <void method="set">
-      <object idref="Equipo1"/>
       <int>3</int>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>nombre</string>
      <void method="set">
-      <object idref="Equipo1"/>
+      <object idref="Equipo0"/>
       <string>Pepe</string>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>fechaNacimiento</string>
      <void method="set">
-      <object idref="Equipo1"/>
+      <object idref="Equipo0"/>
       <object class="java.util.Date">
        <long>-62158582800000</long>
       </object>
@@ -77,21 +29,21 @@
     <void class="p5dgm.main.Equipo" method="getField">
      <string>direccion</string>
      <void method="set">
-      <object idref="Equipo1"/>
+      <object idref="Equipo0"/>
       <string>pepe</string>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>telefono</string>
      <void method="set">
-      <object idref="Equipo1"/>
+      <object idref="Equipo0"/>
       <string>6548749</string>
      </void>
     </void>
     <void class="p5dgm.main.Equipo" method="getField">
      <string>delegacion</string>
      <void method="set">
-      <object idref="Equipo1"/>
+      <object idref="Equipo0"/>
       <string>casa</string>
      </void>
     </void>
