@@ -99,7 +99,7 @@ public class Main {
         }
 	}
 	
-	
+	//FUNCIONES EQUIPO
 	public static Equipo nuevoEquipo() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Introduzca id: ");
@@ -155,7 +155,7 @@ public class Main {
 		return equipo;
 	}
 	
-	
+	//FUNCIONES PROYECTO
 	public static ListaProyecto NuevoProyecto(ListaProyecto listaProyecto) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Introduzca id: ");
@@ -193,4 +193,7 @@ public class Main {
 		listaProyecto.add(proyecto);
 		return listaProyecto;
 	}
+	
+	//FUNCIONES SOCIO
+	
 }
