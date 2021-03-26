@@ -22,11 +22,25 @@ public class XMLEquipoDAO implements EquipoDAO {
 			//Abre XML, lo lee y lo guarda en lista, escribe el nuevo objeto y cierra el archivo
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./equipo.xml"));
 			List<Equipo> ListFromFile = (List<Equipo>) decoder.readObject();
-			ListFromFile.add(a);
-			decoder.close();
-			XMLEncoder encoder = new XMLEncoder(new FileOutputStream("./equipo.xml"));
-			encoder.writeObject(ListFromFile);
-			encoder.close();
+			int mockId = a.getId();
+			boolean flag = false;
+			for (Equipo model : ListFromFile) {
+				if (mockId == model.getId()) {
+					flag = true;
+					break;
+					}
+				}
+			if (flag == true) {
+				System.out.print("El id introducido ya existe.");
+				}
+			else {
+				ListFromFile.add(a);
+				decoder.close();
+				XMLEncoder encoder = new XMLEncoder(new FileOutputStream("./equipo.xml"));
+				encoder.writeObject(ListFromFile);
+				encoder.close();
+				System.out.println("MIEMBRO DE EQUIPO REGISTRADO CORRECTAMENTE.\n");
+				}
 			}
 		catch(IOException ex) {
 			try {
@@ -36,12 +50,12 @@ public class XMLEquipoDAO implements EquipoDAO {
 				listForFile.add(a);
 				encoder.writeObject(listForFile);
 				encoder.close();
+				System.out.println("MIEMBRO DE EQUIPO REGISTRADO CORRECTAMENTE.\n");
 			} catch (FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-		}
-		System.out.println("MIEMBRO DE EQUIPO REGISTRADO CORRECTAMENTE.\n");	
+		}	
 	}
 
 	
@@ -117,8 +131,6 @@ public class XMLEquipoDAO implements EquipoDAO {
 		System.out.println("MIEMBRO DE EQUIPO REGISTRADO CORRECTAMENTE.\n");	
 	}
 		
-
-	
 	public Equipo obtener(int id) throws IOException {
 		Equipo consulta = null;
 		try {
