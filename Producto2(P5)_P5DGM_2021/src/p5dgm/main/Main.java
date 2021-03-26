@@ -156,7 +156,7 @@ public class Main {
 	}
 	
 	//FUNCIONES PROYECTO
-	public static ListaProyecto NuevoProyecto(ListaProyecto listaProyecto) {
+	public static Proyecto NuevoProyecto(Proyecto listaProyecto) {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Introduzca id: ");
 		int id = Integer.parseInt(scan.nextLine());
@@ -190,7 +190,7 @@ public class Main {
 			System.out.println("NumberFormatException occured: " + e.getMessage());
 		}		
 		Proyecto proyecto = new Proyecto(id,nombre,tipo,pais,fechaInicioDate,fechaFinDate/*,financiacionAportadaFloat*/);
-		listaProyecto.add(proyecto);
+		//listaProyecto.add(proyecto);
 		return listaProyecto;
 	}
 	
