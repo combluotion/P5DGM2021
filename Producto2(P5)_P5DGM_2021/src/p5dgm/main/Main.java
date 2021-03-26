@@ -62,7 +62,7 @@ public class Main {
                 		int idEquipoObtener = Integer.parseInt(scanObtenerEquipo.nextLine());	
                 		Equipo obtener = daoObtenerEquipo.obtener(idEquipoObtener);
                 		System.out.println("\nId: " + obtener.getId() + "\nNombre: " + obtener.getNombre() + "\nFecha de nacimiento: " + obtener.getFechaNacimiento());
-                		System.out.println("Telefono: " + obtener.getTelefono() + "\nDireccion: " + obtener.getDireccion() + "\nDelegación: " + obtener.getDelegacion());
+                		System.out.println("Telefono: " + obtener.getTelefono() + "\nDireccion: " + obtener.getDireccion() + "\nDelegación: " + obtener.getDelegacion() +"\n");
                         break;
                     case 4:
                     	System.out.println("Has seleccionado la opcion 3");
