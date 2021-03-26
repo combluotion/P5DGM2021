@@ -15,7 +15,7 @@ import p5dgm.dao.xml.XMLProyectoDAO;
 public class Main {
 
 	public static void main(String[] args) throws IOException {
-		System.out.println("Buenos di1as P5DGM2021\n");
+		System.out.println("Buenos dias P5DGM2021\n");
 		Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
@@ -26,15 +26,16 @@ public class Main {
             System.out.println("2. Modificar miembro del equipo");
             System.out.println("3. Obtener miembro equipo");
             System.out.println("4. Eliminar miembro equipo");
-            /*
-            System.out.println("1. Registrar nuevo miembro del equipo.");
-            System.out.println("2. Modificar miembro del equipo");
-            System.out.println("3. Eliminar miembro equipo");
-            System.out.println("1. Registrar nuevo miembro del equipo.");
-            System.out.println("2. Modificar miembro del equipo");
-            System.out.println("3. Eliminar miembro equipo");
+            System.out.println("5. Registrar nuevo proyecto.");
+            System.out.println("6. Modificar proyecto");
+            System.out.println("7. Obtener proyecto");
+            System.out.println("8. Eliminar proyecto");
+            System.out.println("9. Registrar nuevo socio.");
+            System.out.println("10. Modificar socio");
+            System.out.println("11. Obtener socio");
+            System.out.println("12. Eliminar socio");
             System.out.println("13. Salir");
- 			*/
+ 			
             try {
  
                 System.out.println("Escribe una de las opciones");
@@ -61,9 +62,14 @@ public class Main {
                         System.out.println("Introduzca el id a obtener: ");
                 		int idEquipoObtener = Integer.parseInt(scanObtenerEquipo.nextLine());	
                 		Equipo obtener = daoObtenerEquipo.obtener(idEquipoObtener);
-                		System.out.println("\nId: " + obtener.getId() + "\nNombre: " + obtener.getNombre() + "\nFecha de nacimiento: " + obtener.getFechaNacimiento());
-                		System.out.println("Telefono: " + obtener.getTelefono() + "\nDireccion: " + obtener.getDireccion() + "\nDelegación: " + obtener.getDelegacion() +"\n");
-                        break;
+                		if (obtener == null) {
+                			break;
+                		}
+                		else {
+                			System.out.println("\nId: " + obtener.getId() + "\nNombre: " + obtener.getNombre() + "\nFecha de nacimiento: " + obtener.getFechaNacimiento());
+                    		System.out.println("Telefono: " + obtener.getTelefono() + "\nDireccion: " + obtener.getDireccion() + "\nDelegación: " + obtener.getDelegacion() +"\n");
+                            break;
+                		}
                     case 4:
                     	System.out.println("Has seleccionado la opcion 3");
                         EquipoDAO DAOeliminar = new XMLEquipoDAO();
@@ -80,7 +86,7 @@ public class Main {
                     case 8:
                     case 9:
                     */
-                    case 10:
+                    case 13:
                         salir = true;
                         break;
                     default:

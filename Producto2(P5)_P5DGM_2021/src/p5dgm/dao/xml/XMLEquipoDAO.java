@@ -87,7 +87,7 @@ public class XMLEquipoDAO implements EquipoDAO {
 				encoder.close();
 				}
 			else {
-				System.out.print("No existe el id seleccionado.");
+				System.out.print("No existe el id seleccionado.\n");
 				}
 			}
 		catch(IOException ex) {
@@ -134,7 +134,7 @@ public class XMLEquipoDAO implements EquipoDAO {
 	public Equipo obtener(int id) throws IOException {
 		Equipo consulta = null;
 		try {
-			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
+			//Abre XML, lo lee y devuelve el objeto seleccionado
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./equipo.xml"));
 			@SuppressWarnings("unchecked")
 			List<Equipo> ListFromFile = (List<Equipo>) decoder.readObject();
@@ -147,12 +147,14 @@ public class XMLEquipoDAO implements EquipoDAO {
 					}
 				}
 			if (flag == false) {
-				System.out.print("No existe el id seleccionado.");
+				System.out.print("No existe el id seleccionado.\n");
+				return null;
 				}	
 			}
 		catch(IOException ex) {
 			//Si no existe fichero XML lo crea y escribe el primer objeto en la lista y lo guarda
 			System.out.print("No hay registros todavía");
+			return null;
 		}
 		return consulta;
 	}
