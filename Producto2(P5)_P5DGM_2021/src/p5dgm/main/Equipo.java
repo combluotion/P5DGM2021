@@ -1,4 +1,5 @@
 package p5dgm.main;
+
 import java.util.Date;
 
 public class Equipo {
@@ -10,16 +11,32 @@ public class Equipo {
 	public String telefono;
 	public String delegacion;
 	
+	
+	/*public Proyecto getProyecto() {
+		return proyecto;
+	}
+
+	public void setProyecto(Proyecto proyecto) {
+		this.proyecto = proyecto;
+	}*/
+	
+
 	public Equipo (int id, String nombre, Date fechaNacimiento, String direccion,
-			String telefono, String delegacion){
+			String telefono, String delegacion) {
+		
 		this.id = id;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.delegacion = delegacion;
+	
 	}
 	
+	public Equipo() {
+		
+	};
+
 	public int getId() {
 		return id;
 	}
