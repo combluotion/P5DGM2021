@@ -9,8 +9,10 @@ import java.util.Scanner;
 
 import p5dgm.dao.EquipoDAO;
 import p5dgm.dao.ProyectoDAO;
+import p5dgm.dao.SocioDAO;
 import p5dgm.dao.xml.XMLEquipoDAO;
 import p5dgm.dao.xml.XMLProyectoDAO;
+import p5dgm.dao.xml.XMLSocioDAO;
 
 public class Main {
 
@@ -71,7 +73,7 @@ public class Main {
                             break;
                 		}
                     case 4:
-                    	System.out.println("Has seleccionado la opcion 3");
+                    	System.out.println("Has seleccionado la opcion 4");
                         EquipoDAO DAOeliminar = new XMLEquipoDAO();
                         Scanner scanEliminarEquipo = new Scanner(System.in);
                 		System.out.println("Introduzca el id a eliminar: ");
@@ -84,13 +86,50 @@ public class Main {
                     case 6:
                     case 7:
                     case 8:
-                    case 9:
                     */
+                    case 9:
+                        System.out.println("Has seleccionado la opcion 9");
+                        SocioDAO DAOnuevoS = new XMLSocioDAO();
+                        Socio nuevoS = nuevoSocio();
+                        DAOnuevoS.insertar(nuevoS);
+                        break;
+                       
+                    case 10:
+                        System.out.println("Has seleccionado la opcion 10");
+                        SocioDAO DAOmodificarS = new XMLSocioDAO();
+                        Socio modificarS  = modificarSocio();
+                        DAOmodificarS.modificar(modificarS);
+                        break;
+                    case 11:
+                    	System.out.println("Has seleccionado la opcion 11");
+                        SocioDAO daoObtenerSocio = new XMLSocioDAO();
+                        Scanner scanObtenerSocio = new Scanner(System.in);
+                        System.out.println("Introduzca el id a obtener: ");
+                		int idSocioObtener = Integer.parseInt(scanObtenerSocio.nextLine());	
+                		Socio obtenerS = daoObtenerSocio.obtener(idSocioObtener);
+                		if (obtenerS == null) {
+                			break;
+                		}
+                		else {
+                			System.out.println("\nIdSocio: " + obtenerS.getIdSocio() + "\nNombre: " + obtenerS.getNombreSocio() + "\n"
+                					+ "Direccion: " + obtenerS.getDireccion());
+                    		System.out.println("Telefono: " + obtenerS.getTelefono() + "\nTipo de Cuota: " + obtenerS.getTipoCuota() + "\nImporte de la cuota: " + obtenerS.getImporteCuota() +"\n");
+                            break;
+                		}
+                    case 12:
+                    	System.out.println("Has seleccionado la opcion 12");
+                        SocioDAO DAOeliminarS = new XMLSocioDAO();
+                        Scanner scanEliminarSocio = new Scanner(System.in);
+                		System.out.println("Introduzca el id a eliminar: ");
+                		int idSocioEliminar = Integer.parseInt(scanEliminarSocio.nextLine());	
+                		DAOeliminarS.eliminar(idSocioEliminar);
+                        break;
+                    
                     case 13:
                         salir = true;
                         break;
                     default:
-                        System.out.println("Solo numeros entre 1 y 4");
+                        System.out.println("Solo numeros entre 1 y 12");
                 }
             } catch (InputMismatchException e) {
                 System.out.println("Debes insertar un nï¿½mero");
@@ -160,9 +199,9 @@ public class Main {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Introduzca id: ");
 		int id = Integer.parseInt(scan.nextLine());
-		System.out.println("Introduzca nombre del proyecto");
+		System.out.println("Introduzca nombre del proyecto: ");
 		String nombre = scan.nextLine();
-		System.out.println("Introduzca tipo del proyecto");
+		System.out.println("Introduzca tipo del proyecto: ");
 		String tipo = scan.nextLine();
 		System.out.println("Introduzca Pais: ");
 		String pais = scan.nextLine();
@@ -195,5 +234,47 @@ public class Main {
 	}
 	
 	//FUNCIONES SOCIO
+	
+	public static Socio nuevoSocio() {
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Introduzca id:\n ");
+		int idSocio = Integer.parseInt(scan.nextLine());
+		System.out.println("Introduzca nombre y apellidos:\n ");
+		String nombre = scan.nextLine();
+		System.out.println("Introduzca la dirección: ");
+		String direccion = scan.nextLine();
+		System.out.println("Introduzca telefono: ");
+		String telefono = scan.nextLine();
+		System.out.println("Introduzca delegacion: ");
+		String delegacion = scan.nextLine();
+		System.out.println("Introduzca el tipo de cuota: ");
+		String tipoCuota = scan.nextLine();
+		System.out.println("Introduzca el importe de la cuota:");
+		float ImporteCuota = scan.nextFloat();
+	
+		Socio socio = new Socio(idSocio, nombre, direccion, telefono, delegacion, tipoCuota, ImporteCuota);
+		return socio;
+	}
+	
+	public static Socio modificarSocio() {
+		//Introducir ID a modificar e introducir nuevos valores.
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Introduzca el id a modificar: ");
+		int idSocio = Integer.parseInt(scan.nextLine());
+		System.out.println("Introduzca nuevo nombre y apellidos: ");
+		String nombre = scan.nextLine();
+		System.out.println("Introduzca nueva direccion: ");
+		String direccion = scan.nextLine();
+		System.out.println("Introduzca nuevo telefono: ");
+		String telefono = scan.nextLine();
+		System.out.println("Introduzca nueva delegacion: ");
+		String delegacion = scan.nextLine();
+		System.out.println("Introduzca el tipo de cuota: ");
+		String tipoCuota = scan.nextLine();
+		System.out.println("Introduzca el importe de la cuota: ");
+		float ImporteCuota = scan.nextFloat();
+		Socio socio = new Socio(idSocio, nombre, direccion, telefono, delegacion, tipoCuota, ImporteCuota);
+		return socio;
+	}
 	
 }
