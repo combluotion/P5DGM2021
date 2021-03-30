@@ -1,26 +1,43 @@
 package p5dgm.main;
 
-
 import java.util.Date;
-import javax.xml.bind.annotation.XmlRootElement;
+import java.util.List;
 
 @XmlRootElement
 public class Proyecto {
 
-	public int idProyecto;
+	public int id;
 	public String nombreProyecto;
 	public String tipoProyecto;
 	public String pais;
 	public Date fechaInicio;
 	public Date fechaFin;
-	public float financiacionAportada;
+	//public float financiacionAportada;
+
 	
+	public Proyecto (int id, String nombreProyecto, String tipoProyecto, String pais,
+			Date fechaInicio, Date fechaFin/*, float financiacionAportada*/) {
+		
+		this.id = id;
+		this.nombreProyecto = nombreProyecto;
+		this.tipoProyecto = tipoProyecto;
+		this.pais = pais;
+		this.fechaInicio = fechaInicio;
+		this.fechaFin = fechaFin;
+		//this.financiacionAportada = financiacionAportada;
 	
-	public int getIdProyecto() {
-		return idProyecto;
 	}
-	public void setIdProyecto(int idProyecto) {
-		this.idProyecto = idProyecto;
+	
+	public Proyecto()
+	{
+		
+	}
+	
+	public int getId() {
+		return id;
+	}
+	public void setId(int id) {
+		this.id = id;
 	}
 	public String getNombreProyecto() {
 		return nombreProyecto;
@@ -52,12 +69,12 @@ public class Proyecto {
 	public void setFechaFin(Date fechaFin) {
 		this.fechaFin = fechaFin;
 	}
-	public float getFinanciacionAportada() {
+	/*public float getFinanciacionAportada() {
 		return financiacionAportada;
 	}
 	public void setFinanciacionAportada(float financiacionAportada) {
 		this.financiacionAportada = financiacionAportada;
-	}
+	}*/
 
 	public Proyecto GuardarProyecto() {
 		return this;
