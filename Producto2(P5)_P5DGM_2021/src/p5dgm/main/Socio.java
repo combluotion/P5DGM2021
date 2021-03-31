@@ -29,8 +29,9 @@ public class Socio {
 			}
 			
 	//Metodos getters and setters
-			
-
+			public Socio() {
+				
+			};
 
 			public int getIdSocio() {
 				return idSocio;
