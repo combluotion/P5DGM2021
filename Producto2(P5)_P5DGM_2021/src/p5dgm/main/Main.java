@@ -80,13 +80,43 @@ public class Main {
                 		int idEquipoEliminar = Integer.parseInt(scanEliminarEquipo.nextLine());	
                 		DAOeliminar.eliminar(idEquipoEliminar);
                         break;
-                    		
-                    /*
+                    	
                     case 5:
+                    	System.out.println("Has seleccionado la opcion 5\n");
+                        ProyectoDAO DAOnuevoP = new XMLProyectoDAO();
+                        Proyecto nuevoP = NuevoProyecto();
+                        DAOnuevoP.insertar(nuevoP);
+                        break;
                     case 6:
+                    	System.out.println("Has seleccionado la opcion 6\n");
+                    	ProyectoDAO DAOmodificarP = new XMLProyectoDAO();
+                        Proyecto modificarP  = ModificarProyecto();
+                        DAOmodificarP.modificar(modificarP);
+                        break;
                     case 7:
+                    	System.out.println("Has seleccionado la opcion 7\n");
+                    	ProyectoDAO daoObtenerProyecto = new XMLProyectoDAO();
+                        Scanner scanObtenerProyecto = new Scanner(System.in);
+                        System.out.println("Introduzca el id a obtener: ");
+                		int idProyectoObtener = Integer.parseInt(scanObtenerProyecto.nextLine());	
+                		Proyecto obtenerProyecto = daoObtenerProyecto.obtener(idProyectoObtener);
+                		if (obtenerProyecto == null) {
+                			break;
+                		}
+                		else {
+                			System.out.println("\nId: " + obtenerProyecto.getId() + "\nNombre: " + obtenerProyecto.getNombreProyecto() + "\nTipo Proyecto: " + obtenerProyecto.getTipoProyecto());
+                    		System.out.println("\nPais: " + obtenerProyecto.getPais() + "\nFecha Inicio: " + obtenerProyecto.getFechaInicio() + "\nFecha Fin: " + obtenerProyecto.getFechaFin() +"\n");
+                            break;
+                		}
                     case 8:
-                    */
+                    	System.out.println("Has seleccionado la opcion 8");
+                    	ProyectoDAO DAOeliminarP = new XMLProyectoDAO();
+                        Scanner scanEliminarProyecto = new Scanner(System.in);
+                		System.out.println("Introduzca el id a eliminar: ");
+                		int idProyectoEliminar = Integer.parseInt(scanEliminarProyecto.nextLine());	
+                		DAOeliminarP.eliminar(idProyectoEliminar);
+                        break;
+                    
                     case 9:
                         System.out.println("Has seleccionado la opcion 9");
                         SocioDAO DAOnuevoS = new XMLSocioDAO();
@@ -195,7 +225,7 @@ public class Main {
 	}
 	
 	//FUNCIONES PROYECTO
-	public static Proyecto NuevoProyecto(Proyecto listaProyecto) {
+	public static Proyecto NuevoProyecto() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Introduzca id: ");
 		int id = Integer.parseInt(scan.nextLine());
@@ -230,9 +260,47 @@ public class Main {
 		}		
 		Proyecto proyecto = new Proyecto(id,nombre,tipo,pais,fechaInicioDate,fechaFinDate/*,financiacionAportadaFloat*/);
 		//listaProyecto.add(proyecto);
-		return listaProyecto;
+		return proyecto;
 	}
-	
+	public static Proyecto ModificarProyecto() 
+	{
+		//Introducir ID a modificar e introducir nuevos valores.
+		Scanner scan = new Scanner(System.in);
+		System.out.println("Introduzca el id a modificar: ");
+		int id = Integer.parseInt(scan.nextLine());
+		System.out.println("Introduzca nombre del proyecto: ");
+		String nombre = scan.nextLine();
+		System.out.println("Introduzca tipo del proyecto: ");
+		String tipo = scan.nextLine();
+		System.out.println("Introduzca Pais: ");
+		String pais = scan.nextLine();
+		System.out.println("Introduzca fecha de inicio (dd/MM/yyyy): ");
+		String fechaInicio = scan.nextLine();
+		System.out.println("Introduzca fecha de fin (dd/MM/yyyy): ");
+		String fechaFin = scan.nextLine();
+		Date fechaInicioDate = null;
+		Date fechaFinDate = null;
+		try {
+			fechaInicioDate = new SimpleDateFormat("dd/MM/yyyy").parse(fechaInicio);
+			fechaFinDate = new SimpleDateFormat("dd/MM/yyyy").parse(fechaFin);
+		} 
+		catch (ParseException e) {
+			System.out.println("ParseException occured: formato de fecha incorrecto");
+		}
+		System.out.println("Introduzca financiacion aportada: ");
+		String financiacionAportada = scan.nextLine();
+		float financiacionAportadaFloat = 0;
+		try {
+			financiacionAportadaFloat = Float.parseFloat(financiacionAportada);
+		}
+		catch(NumberFormatException e)
+		{
+			System.out.println("NumberFormatException occured: " + e.getMessage());
+		}		
+		Proyecto proyecto = new Proyecto(id,nombre,tipo,pais,fechaInicioDate,fechaFinDate/*,financiacionAportadaFloat*/);
+		//listaProyecto.add(proyecto);
+		return proyecto;
+	}
 	//FUNCIONES SOCIO
 	
 	public static Socio nuevoSocio() {
