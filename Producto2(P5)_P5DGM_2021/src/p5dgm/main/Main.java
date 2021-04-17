@@ -1,6 +1,8 @@
 package p5dgm.main;
 
 import java.io.IOException;
+import java.sql.*;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -18,6 +20,25 @@ public class Main {
 
 	public static void main(String[] args) throws IOException {
 		System.out.println("Buenos dias P5DGM2021\n");
+		try {
+			Class.forName("com.mysql.jdbc.Driver");  
+		Connection con;
+		
+			con = DriverManager.getConnection(  
+			"jdbc:mysql://localhost:3306/p5dgm2021?characterEncoding=latin1","root","root");
+		
+
+		 
+		//here sonoo is database name, root is username and password  
+		Statement stmt=con.createStatement();  
+		ResultSet rs=stmt.executeQuery("select * from proyecto");  
+		} catch (SQLException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
 		Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
