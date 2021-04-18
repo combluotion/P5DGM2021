@@ -1,10 +1,11 @@
-package p5dgm.dao;
+package p5dgm.dao.mysql;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import p5dgm.dao.mysql.MySQLProyectoDAO;
+import p5dgm.dao.DAOManager;
+import p5dgm.dao.ProyectoDAO;
 
 public class MySQLDaoManager implements DAOManager{
 

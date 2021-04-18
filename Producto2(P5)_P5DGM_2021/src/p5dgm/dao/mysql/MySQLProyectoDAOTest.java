@@ -14,7 +14,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import p5dgm.dao.DAOException;
-import p5dgm.dao.MySQLDaoManager;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.main.Proyecto;
 
