@@ -3,6 +3,8 @@ package p5dgm.dao.xml;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import p5dgm.dao.DAOException;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.main.Proyecto;
 import java.beans.XMLEncoder;
@@ -17,7 +19,7 @@ public class XMLProyectoDAO implements ProyectoDAO {
 	
 	@SuppressWarnings("unchecked")
 	@Override
-	public void insertar(Proyecto a) throws IOException {
+	public void insertar(Proyecto a) throws DAOException {
 		try {
 			//Abre XML, lo lee y lo guarda en lista, escribe el nuevo objeto y cierra el archivo
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./proyecto.xml"));
@@ -58,7 +60,7 @@ public class XMLProyectoDAO implements ProyectoDAO {
 	}
 
 	@Override
-	public void modificar(Proyecto a) throws IOException {
+	public void modificar(Proyecto a) throws DAOException {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./proyecto.xml"));
@@ -98,7 +100,7 @@ public class XMLProyectoDAO implements ProyectoDAO {
 	}
 
 	@Override
-	public void eliminar(int id) throws IOException {
+	public void eliminar(int id) throws DAOException {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./proyecto.xml"));
@@ -134,7 +136,7 @@ public class XMLProyectoDAO implements ProyectoDAO {
 	}
 
 	@Override
-	public Proyecto obtener(int id) throws IOException {
+	public Proyecto obtener(int id) throws DAOException {
 		Proyecto consulta = null;
 		try {
 			//Abre XML, lo lee y devuelve el objeto seleccionado

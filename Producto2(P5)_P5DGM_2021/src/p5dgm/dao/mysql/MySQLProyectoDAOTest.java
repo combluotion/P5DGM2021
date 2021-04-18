@@ -14,57 +14,49 @@ import org.junit.Before;
 import org.junit.Test;
 
 import p5dgm.dao.DAOException;
+import p5dgm.dao.MySQLDaoManager;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.main.Proyecto;
 
 public class MySQLProyectoDAOTest {
 
-	@Before
-	public void setUp() throws Exception {
-	}
-
-	@After
-	public void tearDown() throws Exception {
-	}
-
 	@Test
 	public void testInsertar() throws DAOException, ParseException {
-		
-		try {
-			Class.forName("com.mysql.jdbc.Driver");
-			Connection conn;
-			conn = DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/p5dgm2021?characterEncoding=latin1","root","root");	
-			Proyecto proyecto = new Proyecto(1,"Proyecto1","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
-			ProyectoDAO proyectoDAO = new MySQLProyectoDAO(conn);
-			proyectoDAO.insertar(proyecto);
+			MySQLDaoManager man = new MySQLDaoManager("localhost","root","root","p5dgm2021");
+			Proyecto proyecto = new Proyecto("Proyecto1","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
+			man.getProyectoDAO().insertar(proyecto);
 			assertTrue(true);
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ClassNotFoundException e2) {
-			// TODO Auto-generated catch block
-			e2.printStackTrace();
-		}  
-		
-
-
-		
 	}
 
 	@Test
-	public void testModificar() {
-		fail("Not yet implemented");
+	public void testModificar() throws ParseException, DAOException {
+			MySQLDaoManager man = new MySQLDaoManager("localhost","root","root","p5dgm2021");	
+			Proyecto proyecto = new Proyecto("Proyecto1","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
+			man.getProyectoDAO().insertar(proyecto);
+			proyecto.setNombreProyecto("Proyecto1Modified");
+			man.getProyectoDAO().modificar(proyecto);
+			assertTrue(true);
 	}
 
 	@Test
-	public void testEliminar() {
-		fail("Not yet implemented");
+	public void testEliminar() throws DAOException, ParseException {
+			MySQLDaoManager man = new MySQLDaoManager("localhost","root","root","p5dgm2021");
+			Proyecto proyecto = new Proyecto("ProyectoAEliminar","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
+			man.getProyectoDAO().insertar(proyecto);
+			man.getProyectoDAO().eliminar(proyecto.getId());
+			assertTrue(true);
 	}
 
 	@Test
-	public void testObtener() {
-		fail("Not yet implemented");
+	public void testObtener() throws ParseException, DAOException {
+			MySQLDaoManager man = new MySQLDaoManager("localhost","root","root","p5dgm2021");
+			Proyecto proyecto = new Proyecto("ProyectoAObtener","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);			
+			man.getProyectoDAO().insertar(proyecto);
+			int IdAComprobar = proyecto.getId();
+			proyecto = null;
+			proyecto = man.getProyectoDAO().obtener(IdAComprobar);
+			assertTrue(proyecto != null && proyecto.getId() == IdAComprobar );
+	
 	}
 
 }

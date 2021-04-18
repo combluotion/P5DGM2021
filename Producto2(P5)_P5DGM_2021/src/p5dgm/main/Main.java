@@ -9,6 +9,7 @@ import java.util.Date;
 import java.util.InputMismatchException;
 import java.util.Scanner;
 
+import p5dgm.dao.DAOException;
 import p5dgm.dao.EquipoDAO;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.dao.SocioDAO;
@@ -18,27 +19,8 @@ import p5dgm.dao.xml.XMLSocioDAO;
 
 public class Main {
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws DAOException {
 		System.out.println("Buenos dias P5DGM2021\n");
-		try {
-			Class.forName("com.mysql.jdbc.Driver");  
-		Connection con;
-		
-			con = DriverManager.getConnection(  
-			"jdbc:mysql://localhost:3306/p5dgm2021?characterEncoding=latin1","root","root");
-		
-
-		 
-		//here sonoo is database name, root is username and password  
-		Statement stmt=con.createStatement();  
-		ResultSet rs=stmt.executeQuery("select * from proyecto");  
-		} catch (SQLException e1) {
-			// TODO Auto-generated catch block
-			e1.printStackTrace();
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
 		Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
@@ -279,7 +261,8 @@ public class Main {
 		{
 			System.out.println("NumberFormatException occured: " + e.getMessage());
 		}		
-		Proyecto proyecto = new Proyecto(id,nombre,tipo,pais,fechaInicioDate,fechaFinDate/*,financiacionAportadaFloat*/);
+		Proyecto proyecto = new Proyecto(nombre,tipo,pais,fechaInicioDate,fechaFinDate/*,financiacionAportadaFloat*/);
+		proyecto.setId(id);
 		//listaProyecto.add(proyecto);
 		return proyecto;
 	}
@@ -318,7 +301,8 @@ public class Main {
 		{
 			System.out.println("NumberFormatException occured: " + e.getMessage());
 		}		
-		Proyecto proyecto = new Proyecto(id,nombre,tipo,pais,fechaInicioDate,fechaFinDate/*,financiacionAportadaFloat*/);
+		Proyecto proyecto = new Proyecto(nombre,tipo,pais,fechaInicioDate,fechaFinDate/*,financiacionAportadaFloat*/);
+		proyecto.setId(id);
 		//listaProyecto.add(proyecto);
 		return proyecto;
 	}

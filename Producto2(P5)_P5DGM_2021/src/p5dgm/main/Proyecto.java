@@ -15,10 +15,10 @@ public class Proyecto {
 	//public float financiacionAportada;
 
 	
-	public Proyecto (int id, String nombreProyecto, String tipoProyecto, String pais,
+	public Proyecto (/*int id,*/ String nombreProyecto, String tipoProyecto, String pais,
 			Date fechaInicio, Date fechaFin/*, float financiacionAportada*/) {
 		
-		this.id = id;
+		//this.id = id;
 		this.nombreProyecto = nombreProyecto;
 		this.tipoProyecto = tipoProyecto;
 		this.pais = pais;
