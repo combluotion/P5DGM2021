@@ -2,19 +2,15 @@ package p5dgm.dao.mysql;
 
 import static org.junit.Assert.*;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
-import org.junit.After;
-import org.junit.Before;
+
 import org.junit.Test;
 
 import p5dgm.dao.DAOException;
-import p5dgm.dao.ProyectoDAO;
+
 import p5dgm.main.Proyecto;
 
 public class MySQLProyectoDAOTest {

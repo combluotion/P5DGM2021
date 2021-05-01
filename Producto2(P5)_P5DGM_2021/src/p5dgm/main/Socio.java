@@ -1,7 +1,5 @@
 package p5dgm.main;
 
-import java.util.Date;
-import java.util.List;
 
 public class Socio {
 

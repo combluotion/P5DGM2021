@@ -1,7 +1,5 @@
 package p5dgm.main;
 
-import java.io.IOException;
-import java.sql.*;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
