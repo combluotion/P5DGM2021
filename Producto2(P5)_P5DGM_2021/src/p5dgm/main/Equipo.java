@@ -28,7 +28,6 @@ public class Equipo {
 		this.direccion = direccion;
 		this.telefono = telefono;
 		this.delegacion = delegacion;
-	
 	}
 	
 	public Equipo() {
