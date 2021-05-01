@@ -13,6 +13,7 @@ import p5dgm.dao.DAOException;
 import p5dgm.dao.EquipoDAO;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.dao.SocioDAO;
+import p5dgm.dao.mysql.MySQLDaoManager;
 import p5dgm.dao.xml.XMLEquipoDAO;
 import p5dgm.dao.xml.XMLProyectoDAO;
 import p5dgm.dao.xml.XMLSocioDAO;
@@ -21,9 +22,10 @@ public class Main {
 
 	public static void main(String[] args) throws DAOException {
 		System.out.println("Buenos dias P5DGM2021\n");
+		MySQLDaoManager man = new MySQLDaoManager();
 		Scanner sn = new Scanner(System.in);
         boolean salir = false;
-        int opcion; //Guardaremos la opcion del usuario
+        int opcion1, opcion2; //Guardaremos la opcion del usuario
  
         while (!salir) {
  
@@ -44,46 +46,99 @@ public class Main {
             try {
  
                 System.out.println("Escribe una de las opciones");
-                opcion = sn.nextInt();
+                opcion1 = sn.nextInt();
  
-                switch (opcion) {
+                switch (opcion1) {
                     case 1:
-                        System.out.println("Has seleccionado la opcion 1");
-                        EquipoDAO DAOnuevo = new XMLEquipoDAO();
-                        Equipo nuevo = nuevoEquipo();
-                        DAOnuevo.insertar(nuevo);
+                        System.out.println("1.SQL\n2.XML");
+                        opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Equipo nuevo = nuevoEquipo();
+                            man.getEquipoDAO().insertar(nuevo);
+                            break;
+                        }
+                        if(opcion2 == 2 ) {
+                        	EquipoDAO DAOnuevo = new XMLEquipoDAO();
+                            Equipo nuevo = nuevoEquipo();
+                            DAOnuevo.insertar(nuevo);
+                            break;
+                        }
                         break;
                        
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
-                        EquipoDAO DAOmodificar = new XMLEquipoDAO();
-                        Equipo modificar  = modificarEquipo();
-                        DAOmodificar.modificar(modificar);
+                        System.out.println("1.SQL\n2.XML");
+                        opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Equipo modificar = modificarEquipo();
+                            man.getEquipoDAO().modificar(modificar);
+                            break; 
+                        }
+                        if(opcion2 == 2 ) {
+                        	 EquipoDAO DAOmodificar = new XMLEquipoDAO();
+                             Equipo modificar  = modificarEquipo();
+                             DAOmodificar.modificar(modificar);
+                             break;
+                        }
                         break;
+                       
                     case 3:
                     	System.out.println("Has seleccionado la opcion 3\n");
-                        EquipoDAO daoObtenerEquipo = new XMLEquipoDAO();
-                        Scanner scanObtenerEquipo = new Scanner(System.in);
-                        System.out.println("Introduzca el id a obtener: ");
-                		int idEquipoObtener = Integer.parseInt(scanObtenerEquipo.nextLine());	
-                		Equipo obtener = daoObtenerEquipo.obtener(idEquipoObtener);
-                		if (obtener == null) {
-                			break;
-                		}
-                		else {
-                			System.out.println("\nId: " + obtener.getId() + "\nNombre: " + obtener.getNombre() + "\nFecha de nacimiento: " + obtener.getFechaNacimiento());
-                    		System.out.println("Telefono: " + obtener.getTelefono() + "\nDireccion: " + obtener.getDireccion() + "\nDelegación: " + obtener.getDelegacion() +"\n");
-                            break;
-                		}
+                    	System.out.println("1.SQL\n2.XML");
+                    	opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Scanner scanObtenerEquiposql = new Scanner(System.in);
+                            System.out.println("Introduzca el id a obtener: ");
+                            int idEquipoObtenersql = Integer.parseInt(scanObtenerEquiposql.nextLine());
+                            Equipo obtenersql = man.getEquipoDAO().obtener(idEquipoObtenersql);
+                            if (obtenersql == null) {
+                    			break;
+                    		}
+                    		else {
+                    			System.out.println("\nId: " + obtenersql.getId() + "\nNombre: " + obtenersql.getNombre() + "\nFecha de nacimiento: " + obtenersql.getFechaNacimiento());
+                        		System.out.println("Telefono: " + obtenersql.getTelefono() + "\nDireccion: " + obtenersql.getDireccion() + "\nDelegación: " + obtenersql.getDelegacion() +"\n");
+                                break;
+                    		}	 
+                        }
+                        if(opcion2 == 2 ) {
+                        	EquipoDAO daoObtenerEquipo = new XMLEquipoDAO();
+                            Scanner scanObtenerEquipo = new Scanner(System.in);
+                            System.out.println("Introduzca el id a obtener: ");
+                    		int idEquipoObtener = Integer.parseInt(scanObtenerEquipo.nextLine());	
+                    		Equipo obtener = daoObtenerEquipo.obtener(idEquipoObtener);
+                    		if (obtener == null) {
+                    			break;
+                    		}
+                    		else {
+                    			System.out.println("\nId: " + obtener.getId() + "\nNombre: " + obtener.getNombre() + "\nFecha de nacimiento: " + obtener.getFechaNacimiento());
+                        		System.out.println("Telefono: " + obtener.getTelefono() + "\nDireccion: " + obtener.getDireccion() + "\nDelegación: " + obtener.getDelegacion() +"\n");
+                                break;
+                    		}
+                        }
+                        break;
+                        
+                            
                     case 4:
                     	System.out.println("Has seleccionado la opcion 4");
-                        EquipoDAO DAOeliminar = new XMLEquipoDAO();
-                        Scanner scanEliminarEquipo = new Scanner(System.in);
-                		System.out.println("Introduzca el id a eliminar: ");
-                		int idEquipoEliminar = Integer.parseInt(scanEliminarEquipo.nextLine());	
-                		DAOeliminar.eliminar(idEquipoEliminar);
-                        break;
-                    	
+                    	System.out.println("1.SQL\n2.XML");
+                    	opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Scanner scanEliminarEquipo = new Scanner(System.in);
+                    		System.out.println("Introduzca el id a eliminar: ");
+                    		int idEquipoEliminar = Integer.parseInt(scanEliminarEquipo.nextLine());
+                            man.getEquipoDAO().eliminar(idEquipoEliminar);
+                            break;
+                        }
+                        if(opcion2 == 2 ) {
+                            EquipoDAO DAOeliminar = new XMLEquipoDAO();
+                            Scanner scanEliminarEquipo = new Scanner(System.in);
+                    		System.out.println("Introduzca el id a eliminar: ");
+                    		int idEquipoEliminar = Integer.parseInt(scanEliminarEquipo.nextLine());	
+                    		DAOeliminar.eliminar(idEquipoEliminar);
+                            break;
+                        }
+                        
+                    /*	
                     case 5:
                     	System.out.println("Has seleccionado la opcion 5\n");
                         ProyectoDAO DAOnuevoP = new XMLProyectoDAO();
@@ -157,7 +212,7 @@ public class Main {
                 		int idSocioEliminar = Integer.parseInt(scanEliminarSocio.nextLine());	
                 		DAOeliminarS.eliminar(idSocioEliminar);
                         break;
-                    
+                    */
                     case 13:
                         salir = true;
                         break;
@@ -174,8 +229,6 @@ public class Main {
 	//FUNCIONES EQUIPO
 	public static Equipo nuevoEquipo() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Introduzca id: ");
-		int id = Integer.parseInt(scan.nextLine());
 		System.out.println("Introduzca nombre y apellidos: ");
 		String nombre = scan.nextLine();
 		System.out.println("Introduzca fecha de nacimiento(dd/MM/yyyy): ");
@@ -195,15 +248,13 @@ public class Main {
 		String delegacion = scan.nextLine();
 		/*System.out.println("Introduzca id de proyecto: ");
 		String proyecto = scan.nextLine();*/
-		Equipo equipo = new Equipo(id, nombre, fechaNacimiento, direccion, telefono, delegacion);
+		Equipo equipo = new Equipo(nombre, fechaNacimiento, direccion, telefono, delegacion);
 		return equipo;
 	}
 	
+	
 	public static Equipo modificarEquipo() {
-		//Introducir ID a modificar e introducir nuevos valores.
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Introduzca el id a modificar: ");
-		int id = Integer.parseInt(scan.nextLine());
 		System.out.println("Introduzca nuevos nombre y apellidos: ");
 		String nombre = scan.nextLine();
 		System.out.println("Introduzca nueva fecha de nacimiento(dd/MM/yyyy): ");
@@ -221,11 +272,11 @@ public class Main {
 		String telefono = scan.nextLine();
 		System.out.println("Introduzca nueva delegacion: ");
 		String delegacion = scan.nextLine();
-		/*System.out.println("Introduzca id de proyecto: ");
-		String proyecto = scan.nextLine();*/
-		Equipo equipo = new Equipo(id, nombre, fechaNacimiento, direccion, telefono, delegacion);
+		Equipo equipo = new Equipo(nombre, fechaNacimiento, direccion, telefono, delegacion);
 		return equipo;
 	}
+	
+
 	
 	//FUNCIONES PROYECTO
 	public static Proyecto NuevoProyecto() {
@@ -348,6 +399,5 @@ public class Main {
 		float ImporteCuota = scan.nextFloat();
 		Socio socio = new Socio(idSocio, nombre, direccion, telefono, delegacion, tipoCuota, ImporteCuota);
 		return socio;
-	}
-	
+	}	
 }

@@ -21,10 +21,8 @@ public class Equipo {
 	}*/
 	
 
-	public Equipo (int id, String nombre, Date fechaNacimiento, String direccion,
+	public Equipo (String nombre, Date fechaNacimiento, String direccion,
 			String telefono, String delegacion) {
-		
-		this.id = id;
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;

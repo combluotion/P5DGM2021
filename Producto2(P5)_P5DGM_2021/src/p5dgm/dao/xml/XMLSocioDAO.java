@@ -16,7 +16,7 @@ public class XMLSocioDAO implements SocioDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void insertar(Socio a) throws IOException {
+	public void insertar(Socio a) {
 		try {
 			//Abre XML, lo lee y lo guarda en lista, escribe el nuevo objeto y cierra el archivo
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./socio.xml"));
@@ -59,7 +59,7 @@ public class XMLSocioDAO implements SocioDAO {
 
 	
 	@Override
-	public void modificar(Socio a) throws IOException {
+	public void modificar(Socio a) {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./socio.xml"));
@@ -98,7 +98,7 @@ public class XMLSocioDAO implements SocioDAO {
 		
 	
 
-	public void eliminar(int id) throws IOException {
+	public void eliminar(int id) {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./socio.xml"));
@@ -130,7 +130,7 @@ public class XMLSocioDAO implements SocioDAO {
 		System.out.println("SOCIO REGISTRADO CORRECTAMENTE.\n");	
 	}
 		
-	public Socio obtener(int id) throws IOException {
+	public Socio obtener(int id) {
 		Socio consulta = null;
 		try {
 			//Abre XML, lo lee y devuelve el objeto seleccionado

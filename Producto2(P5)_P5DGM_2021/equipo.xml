@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<java version="15.0.1" class="java.beans.XMLDecoder">
+<java version="15.0.2" class="java.beans.XMLDecoder">
  <object class="java.util.ArrayList">
   <void method="add">
    <object class="p5dgm.main.Equipo" id="Equipo0">
@@ -93,6 +93,47 @@
      <void method="set">
       <object idref="Equipo1"/>
       <string>Ripollet</string>
+     </void>
+    </void>
+   </object>
+  </void>
+  <void method="add">
+   <object class="p5dgm.main.Equipo" id="Equipo2">
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>nombre</string>
+     <void method="set">
+      <object idref="Equipo2"/>
+      <string>Gerard</string>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>fechaNacimiento</string>
+     <void method="set">
+      <object idref="Equipo2"/>
+      <object class="java.util.Date">
+       <long>821746800000</long>
+      </object>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>direccion</string>
+     <void method="set">
+      <object idref="Equipo2"/>
+      <string>Isabel</string>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>telefono</string>
+     <void method="set">
+      <object idref="Equipo2"/>
+      <string>6059454</string>
+     </void>
+    </void>
+    <void class="p5dgm.main.Equipo" method="getField">
+     <string>delegacion</string>
+     <void method="set">
+      <object idref="Equipo2"/>
+      <string>ripo</string>
      </void>
     </void>
    </object>

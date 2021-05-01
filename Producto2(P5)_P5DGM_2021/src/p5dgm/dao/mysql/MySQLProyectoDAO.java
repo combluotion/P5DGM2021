@@ -173,9 +173,6 @@ public class MySQLProyectoDAO implements ProyectoDAO{
 		}
 		
 		
-		
-	
-
 	public Proyecto convertir(ResultSet rs) throws SQLException{
 		// String nombreProyecto, String tipoProyecto, String pais, Date fechaInicio, Date fechaFin
 		String nombreProyecto = rs.getString("nombreProyecto");

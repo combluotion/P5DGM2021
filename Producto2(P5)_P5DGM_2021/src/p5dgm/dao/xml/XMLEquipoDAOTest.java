@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import p5dgm.dao.DAOException;
 import p5dgm.dao.EquipoDAO;
 import p5dgm.main.Equipo;
 
@@ -26,34 +27,24 @@ public class XMLEquipoDAOTest {
 	}
 
 	@Test
-	public void testInsertar() throws ParseException {
-		Equipo equipo = new Equipo(1,"Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
+	public void testInsertar() throws ParseException, DAOException {
+		Equipo equipo = new Equipo("Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
 		EquipoDAO equipoDAO = new XMLEquipoDAO();
-		try {
-			equipoDAO.insertar(equipo);
-			assertTrue(true);
-		} catch (IOException e) {
-			e.printStackTrace();			
-			fail(e.getMessage());
-		}
+		equipoDAO.insertar(equipo);
+		assertTrue(true);
 		
 	}
 
 	@Test
-	public void testModificar() throws ParseException {
-		Equipo equipo = new Equipo(1,"Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
+	public void testModificar() throws ParseException, DAOException {
+		Equipo equipo = new Equipo("Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
 		EquipoDAO equipoDAO = new XMLEquipoDAO();
-        try {
-			equipoDAO.modificar(equipo);
-			assertTrue(true);
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
-		}
+        equipoDAO.modificar(equipo);
+		assertTrue(true);
 	}
 
 	@Test
-	public void testObtener() throws IOException {
+	public void testObtener() throws IOException, DAOException {
 		EquipoDAO equipoDAO = new XMLEquipoDAO();	
 		Equipo obtener = equipoDAO.obtener(1);
 		if (obtener == null) {
@@ -65,15 +56,10 @@ public class XMLEquipoDAOTest {
 	}
 
 	@Test
-	public void testEliminar() {
+	public void testEliminar() throws DAOException {
         EquipoDAO DAOeliminar = new XMLEquipoDAO();
-		try {
-			DAOeliminar.eliminar(1);
-			assertTrue(true);
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
-		}
+		DAOeliminar.eliminar(1);
+		assertTrue(true);
 	}
 
 }
