@@ -1,6 +1,7 @@
 package p5dgm.dao.mysql;
 
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -25,7 +26,8 @@ public class MySQLProyectoDAO implements ProyectoDAO{
 	
 	final String INSERT = "INSERT INTO proyecto (nombreProyecto,tipoProyecto,pais,fechaInicio,fechaFin)	VALUES (?,?,?,STR_TO_DATE(?, '%d/%m/%Y'),STR_TO_DATE(?, '%d/%m/%Y'))";
 	final String UPDATE = "UPDATE proyecto SET nombreProyecto = ?, tipoProyecto = ?, pais = ?, fechaInicio = STR_TO_DATE(?, '%d/%m/%Y'), fechaFin = STR_TO_DATE(?, '%d/%m/%Y') WHERE Id = ?";
-	final String DELETE = "DELETE FROM proyecto WHERE Id = ?";
+	//final String DELETE = "DELETE FROM proyecto WHERE Id = ?";
+	final String DELETE = "CALL Proyecto_delete(?);";
 	final String SELECT = "SELECT * FROM proyecto WHERE Id = ?";
 	
 	@Override
@@ -34,7 +36,10 @@ public class MySQLProyectoDAO implements ProyectoDAO{
 		 ResultSet rs = null;
 		 try 
 		 {
-			 stat = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS);
+			 stat = conn.prepareStatement(INSERT, Statement.RETURN_GENERATED_KEYS,ResultSet.TYPE_SCROLL_INSENSITIVE,
+                     ResultSet.CONCUR_UPDATABLE);
+			 conn.setAutoCommit(false);
+			 
 			 stat.setString(1, a.getNombreProyecto());
 			 stat.setString(2, a.getTipoProyecto());
 			 stat.setString(3, a.getPais());
@@ -43,14 +48,28 @@ public class MySQLProyectoDAO implements ProyectoDAO{
 			 stat.setString(5, formatter.format(a.getFechaFin()));
 			 
 			 if(stat.executeUpdate() == 0)
-			 {throw new DAOException("Error en creación de proyecto");}
+			 {	 
+				 conn.rollback();
+				 throw new DAOException("Error en creación de proyecto");			 
+			 }
+			 
+			 conn.commit();
+			 
 			 rs = stat.getGeneratedKeys();
              if(rs.next())
              {
                  a.setId(rs.getInt(1));
              }
+                     
+             
 		 }
 		 catch(SQLException ex) {
+			 try {
+				conn.rollback();
+			} catch (SQLException e) {
+				e.printStackTrace();
+				throw new DAOException("Error en SQL", ex);
+			}
 			 throw new DAOException("Error en SQL", ex);
 		 }
 		 finally
@@ -108,7 +127,7 @@ public class MySQLProyectoDAO implements ProyectoDAO{
 
 	@Override
 	public void eliminar(int id) throws DAOException{
-		 PreparedStatement stat = null;
+		 /*PreparedStatement stat = null;
 		 try 
 		 {
 			 stat = conn.prepareStatement(DELETE);
@@ -116,19 +135,18 @@ public class MySQLProyectoDAO implements ProyectoDAO{
 			 
 			 if(stat.executeUpdate() == 0)
 			 {throw new DAOException("Error en eliminación de proyecto");} 			 
-		 }
+		 }*/
+		try (CallableStatement stmt = conn.prepareCall(DELETE)) {
+		    stmt.setInt(1, id);
+
+		    stmt.execute();
+		}
 		 catch(SQLException ex) {
 			 throw new DAOException("Error en SQL", ex);
 		 }
 		 finally
 		 {
-			 if(stat != null) {
-			 try {
-				stat.close();
-			} catch (SQLException ex) {
-				throw new DAOException("Error en SQL", ex);
-			}
-			 }
+			 
 		 }
 		
 	}
