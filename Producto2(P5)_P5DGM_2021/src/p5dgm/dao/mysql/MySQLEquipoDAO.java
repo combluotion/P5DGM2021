@@ -24,10 +24,10 @@ public class MySQLEquipoDAO implements EquipoDAO{
 		this.conn = conn;
 	}
 	
-	final String INSERT = "INSERT INTO equipo (nombre, fechaNacimiento, direccion, telefono, delegacion) VALUES (?, STR_TO_DATE(?, '%d/%m/%Y'), ?, ?, ?)";
-	final String UPDATE = "UPDATE equipo SET nombre = ?, fechaNacimiento = STR_TO_DATE(?, '%d/%m/%Y'), direccion = ?, telefono = ?, delegacion = ? WHERE Id = ?";
+	final String INSERT = "CALL insertar_equipo (?,STR_TO_DATE(?, '%d/%m/%Y'),?,?,?)";
+	final String UPDATE = "CALL update_equipo (?,STR_TO_DATE(?, '%d/%m/%Y'),?,?,?,?)";
 	final String DELETE = "CALL eliminar_equipo (?)";
-	final String SELECT = "SELECT * FROM equipo WHERE Id = ?";
+	final String SELECT = "CALL select_equipo (?)";
 	
 	public void insertar(Equipo a) throws DAOException {
 		 PreparedStatement stat = null;
