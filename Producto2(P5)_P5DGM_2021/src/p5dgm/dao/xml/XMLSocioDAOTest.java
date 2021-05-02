@@ -10,6 +10,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
 
+import p5dgm.dao.DAOException;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.dao.SocioDAO;
 import p5dgm.main.Proyecto;
@@ -29,13 +30,13 @@ public class XMLSocioDAOTest {
 	}
 	
 	@Test
-	public void testInsertar() throws ParseException {
+	public void testInsertar() throws ParseException, DAOException, IOException {
 		Socio socio = new Socio(1,"RAmon Gracia Serra","Calle Mayor 50","658965478","Madrid","menual",150);
 		SocioDAO socioDAO = new XMLSocioDAO();
 		try {
 			socioDAO.insertar(socio);
 			assertTrue(true);
-		} catch (IOException e){
+		} catch (DAOException e){
 			e.printStackTrace();			
 			fail(e.getMessage());
 		}
@@ -43,16 +44,11 @@ public class XMLSocioDAOTest {
 	}
 
 	@Test
-	public void testModificar() throws ParseException {
+	public void testModificar() throws ParseException, DAOException, IOException {
 		SocioDAO DAOmodificar = new XMLSocioDAO();
         Socio modificar  = new Socio(1,"RAmon Gracia Serra","Calle Mayor 50","658965478","Madrid","trimestral",550);
-        try {
-			DAOmodificar.modificar(modificar);
-			assertTrue(true);
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
-		}
+        DAOmodificar.modificar(modificar);
+		assertTrue(true);
 	}
 
 }

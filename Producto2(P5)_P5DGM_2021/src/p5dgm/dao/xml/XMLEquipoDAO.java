@@ -3,6 +3,8 @@ package p5dgm.dao.xml;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import p5dgm.dao.DAOException;
 import p5dgm.dao.EquipoDAO;
 import p5dgm.main.Equipo;
 import java.beans.XMLEncoder;
@@ -17,7 +19,7 @@ public class XMLEquipoDAO implements EquipoDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void insertar(Equipo a) throws IOException {
+	public void insertar(Equipo a) throws DAOException {
 		try {
 			//Abre XML, lo lee y lo guarda en lista, escribe el nuevo objeto y cierra el archivo
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./equipo.xml"));
@@ -60,7 +62,7 @@ public class XMLEquipoDAO implements EquipoDAO {
 
 	
 	@Override
-	public void modificar(Equipo a) throws IOException {
+	public void modificar(Equipo a) throws DAOException {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./equipo.xml"));
@@ -99,7 +101,7 @@ public class XMLEquipoDAO implements EquipoDAO {
 		
 	
 
-	public void eliminar(int id) throws IOException {
+	public void eliminar(int id) throws DAOException {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./equipo.xml"));
@@ -131,7 +133,7 @@ public class XMLEquipoDAO implements EquipoDAO {
 		System.out.println("MIEMBRO DE EQUIPO REGISTRADO CORRECTAMENTE.\n");	
 	}
 		
-	public Equipo obtener(int id) throws IOException {
+	public Equipo obtener(int id) {
 		Equipo consulta = null;
 		try {
 			//Abre XML, lo lee y devuelve el objeto seleccionado
@@ -157,6 +159,13 @@ public class XMLEquipoDAO implements EquipoDAO {
 			return null;
 		}
 		return consulta;
+	}
+
+
+	@Override
+	public List<Equipo> obtenerTodos() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

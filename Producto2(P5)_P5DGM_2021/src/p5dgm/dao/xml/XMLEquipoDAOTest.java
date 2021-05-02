@@ -3,6 +3,7 @@ package p5dgm.dao.xml;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import p5dgm.dao.DAOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -26,34 +27,25 @@ public class XMLEquipoDAOTest {
 	}
 
 	@Test
-	public void testInsertar() throws ParseException {
+	public void testInsertar() throws ParseException, DAOException {
 		Equipo equipo = new Equipo(1,"Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
 		EquipoDAO equipoDAO = new XMLEquipoDAO();
-		try {
-			equipoDAO.insertar(equipo);
-			assertTrue(true);
-		} catch (IOException e) {
-			e.printStackTrace();			
-			fail(e.getMessage());
-		}
+		equipoDAO.insertar(equipo);
+		assertTrue(true);
 		
 	}
 
 	@Test
-	public void testModificar() throws ParseException {
+	public void testModificar() throws ParseException, DAOException {
 		Equipo equipo = new Equipo(1,"Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
 		EquipoDAO equipoDAO = new XMLEquipoDAO();
-        try {
-			equipoDAO.modificar(equipo);
-			assertTrue(true);
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
-		}
+     	equipoDAO.modificar(equipo);
+		assertTrue(true);
+		
 	}
 
 	@Test
-	public void testObtener() throws IOException {
+	public void testObtener() throws IOException, DAOException {
 		EquipoDAO equipoDAO = new XMLEquipoDAO();	
 		Equipo obtener = equipoDAO.obtener(1);
 		if (obtener == null) {
@@ -65,15 +57,11 @@ public class XMLEquipoDAOTest {
 	}
 
 	@Test
-	public void testEliminar() {
+	public void testEliminar() throws DAOException {
         EquipoDAO DAOeliminar = new XMLEquipoDAO();
-		try {
-			DAOeliminar.eliminar(1);
-			assertTrue(true);
-		} catch (IOException e) {
-			e.printStackTrace();
-			fail(e.getMessage());
-		}
+		DAOeliminar.eliminar(1);
+		assertTrue(true);
+		
 	}
 
 }

@@ -11,6 +11,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import p5dgm.dao.DAOException;
 import p5dgm.dao.EquipoDAO;
 import p5dgm.dao.ProyectoDAO;
 import p5dgm.main.Equipo;
@@ -27,7 +28,7 @@ public class XMLProyectoDAOTest {
 	}
 
 	@Test
-	public void testInsertar() throws ParseException {
+	public void testInsertar() throws ParseException, DAOException {
 		Proyecto proyecto = new Proyecto(1,"Proyecto1","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
 		ProyectoDAO proyectoDAO = new XMLProyectoDAO();
 		try {
@@ -41,7 +42,7 @@ public class XMLProyectoDAOTest {
 	}
 
 	@Test
-	public void testModificar() throws ParseException {
+	public void testModificar() throws ParseException, DAOException {
 		ProyectoDAO DAOmodificar = new XMLProyectoDAO();
         Proyecto modificar  = new Proyecto(1,"Proyecto1Modified","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
         try {
@@ -54,7 +55,7 @@ public class XMLProyectoDAOTest {
 	}
 
 	@Test
-	public void testObtener() throws IOException {
+	public void testObtener() throws DAOException {
         ProyectoDAO daoObtenerProyecto = new XMLProyectoDAO();	
 		Proyecto obtener = daoObtenerProyecto.obtener(1);
 		if (obtener == null) {
@@ -66,12 +67,12 @@ public class XMLProyectoDAOTest {
 	}
 
 	@Test
-	public void testEliminar() {
+	public void testEliminar() throws DAOException {
         ProyectoDAO DAOeliminar = new XMLProyectoDAO();
 		try {
 			DAOeliminar.eliminar(1);
 			assertTrue(true);
-		} catch (IOException e) {
+		} catch (DAOException e) {
 			e.printStackTrace();
 			fail(e.getMessage());
 		}

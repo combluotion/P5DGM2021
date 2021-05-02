@@ -1,6 +1,5 @@
 package p5dgm.main;
 
-import java.util.Date;
 import java.util.List;
 
 public class Socio {
@@ -22,17 +21,36 @@ public class Socio {
 				
 				this.idSocio = idSocio;
 				this.nombreSocio = nombreSocio;
+				this.direccion = direccion;
 				this.telefono = telefono;
 				this.delegacion = delegacion;
 				this.tipoCuota = tipoCuota;
 				this.ImporteCuota = ImporteCuota;
-			}
+		
+			};
+			public Socio (String nombreSocio, String direccion, String telefono, String delegacion,
+					String tipoCuota, String ImporteCuota) {
+					
+					this.idSocio = 0;
+					this.nombreSocio = nombreSocio;
+					this.direccion = direccion;
+					this.telefono = telefono;
+					this.delegacion = delegacion;
+					this.tipoCuota = tipoCuota;
+					this.ImporteCuota = Float.parseFloat(ImporteCuota);
 			
-	//Metodos getters and setters
+				};
+			
 			public Socio() {
 				
 			};
+	//Metodos getters and setters
+			
 
+			public Socio(String nombre, String direccion2, String telefono2, String delegacion2, String tipoCuota2,
+					float importeCuota2) {
+				// TODO Auto-generated constructor stub
+			}
 			public int getIdSocio() {
 				return idSocio;
 			}
