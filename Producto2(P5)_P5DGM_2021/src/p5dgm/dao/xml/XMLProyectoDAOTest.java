@@ -29,12 +29,8 @@ public class XMLProyectoDAOTest {
 
 	@Test
 	public void testInsertar() throws ParseException, DAOException {
-<<<<<<< HEAD
 		Proyecto proyecto = new Proyecto("Proyecto1","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
 		proyecto.setId(999);
-=======
-		Proyecto proyecto = new Proyecto(1,"Proyecto1","Importante","Italia",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1997")/*,financiacionAportadaFloat*/);
->>>>>>> refs/remotes/origin/Mc_producto3
 		ProyectoDAO proyectoDAO = new XMLProyectoDAO();
 		try {
 			proyectoDAO.insertar(proyecto);
@@ -62,13 +58,8 @@ public class XMLProyectoDAOTest {
 
 	@Test
 	public void testObtener() throws DAOException {
-<<<<<<< HEAD
         ProyectoDAO daoObtenerProyecto = new XMLProyectoDAO();
 		Proyecto obtener = daoObtenerProyecto.obtener(999);
-=======
-        ProyectoDAO daoObtenerProyecto = new XMLProyectoDAO();	
-		Proyecto obtener = daoObtenerProyecto.obtener(1);
->>>>>>> refs/remotes/origin/Mc_producto3
 		if (obtener == null) {
 			fail("Not found");
 		}

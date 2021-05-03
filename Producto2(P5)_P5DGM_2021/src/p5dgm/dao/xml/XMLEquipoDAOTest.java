@@ -34,20 +34,11 @@ public class XMLEquipoDAOTest {
 
 	@Test
 	public void testModificar() throws ParseException, DAOException {
-<<<<<<< HEAD
 		Equipo equipo = new Equipo("Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
-=======
-		Equipo equipo = new Equipo(1,"Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
->>>>>>> refs/remotes/origin/Mc_producto3
 		EquipoDAO equipoDAO = new XMLEquipoDAO();
-<<<<<<< HEAD
-        equipoDAO.modificar(equipo);
-		assertTrue(true);
-=======
+
      	equipoDAO.modificar(equipo);
 		assertTrue(true);
-		
->>>>>>> refs/remotes/origin/Mc_producto3
 	}
 
 	@Test
@@ -67,10 +58,6 @@ public class XMLEquipoDAOTest {
         EquipoDAO DAOeliminar = new XMLEquipoDAO();
 		DAOeliminar.eliminar(1);
 		assertTrue(true);
-<<<<<<< HEAD
-=======
-		
->>>>>>> refs/remotes/origin/Mc_producto3
 	}
 
 }

@@ -23,10 +23,7 @@ public class Equipo {
 
 	public Equipo (String nombre, Date fechaNacimiento, String direccion,
 			String telefono, String delegacion) {
-<<<<<<< HEAD
-=======
-		
->>>>>>> refs/remotes/origin/Mc_producto3
+
 		this.nombre = nombre;
 		this.fechaNacimiento = fechaNacimiento;
 		this.direccion = direccion;
