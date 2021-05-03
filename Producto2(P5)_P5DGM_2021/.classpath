@@ -86,7 +86,11 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
+<<<<<<< HEAD
 	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_291/lib/ext/mysql-connector.jar">
+=======
+	<classpathentry kind="lib" path="C:/Program Files/Java/jre1.8.0_281/lib/ext/mysql-connector.jar">
+>>>>>>> refs/remotes/origin/Mc_producto3
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>

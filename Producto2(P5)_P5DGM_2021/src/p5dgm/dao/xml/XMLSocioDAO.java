@@ -2,6 +2,8 @@ package p5dgm.dao.xml;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import p5dgm.dao.DAOException;
 import p5dgm.dao.SocioDAO;
 import p5dgm.main.Socio;
 import java.beans.XMLEncoder;
@@ -16,7 +18,7 @@ public class XMLSocioDAO implements SocioDAO {
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public void insertar(Socio a) {
+	public void insertar(Socio a) throws DAOException {
 		try {
 			//Abre XML, lo lee y lo guarda en lista, escribe el nuevo objeto y cierra el archivo
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./socio.xml"));
@@ -59,7 +61,7 @@ public class XMLSocioDAO implements SocioDAO {
 
 	
 	@Override
-	public void modificar(Socio a) {
+	public void modificar(Socio a) throws DAOException {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./socio.xml"));
@@ -98,7 +100,7 @@ public class XMLSocioDAO implements SocioDAO {
 		
 	
 
-	public void eliminar(int id) {
+	public void eliminar(int id) throws DAOException {
 		try {
 			//Abre XML, lo lee y elimina el objeto seleccionado y lo reemplaza por el nuevo objeto
 			XMLDecoder decoder = new XMLDecoder(new FileInputStream("./socio.xml"));
@@ -130,7 +132,7 @@ public class XMLSocioDAO implements SocioDAO {
 		System.out.println("SOCIO REGISTRADO CORRECTAMENTE.\n");	
 	}
 		
-	public Socio obtener(int id) {
+	public Socio obtener(int id) throws DAOException {
 		Socio consulta = null;
 		try {
 			//Abre XML, lo lee y devuelve el objeto seleccionado
@@ -156,6 +158,13 @@ public class XMLSocioDAO implements SocioDAO {
 			return null;
 		}
 		return consulta;
+	}
+
+
+	@Override
+	public List<Socio> obtenerTodos() throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }

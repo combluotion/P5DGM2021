@@ -164,5 +164,11 @@ public class XMLProyectoDAO implements ProyectoDAO {
 		return consulta;
 	}
 
+	@Override
+	public List<Proyecto> obtenerTodos() throws DAOException {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
 	
 }

@@ -13,12 +13,14 @@ public class MySQLDaoManager implements DAOManager{
 	private Connection conn;
 	private ProyectoDAO proyecto = null;
 	private EquipoDAO equipo = null;
+	private SocioDAO socio = null;
 	
-	public MySQLDaoManager() {
-			try {
-				Class.forName("com.mysql.jdbc.Driver");
-				conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/p5dgm2021", "root","");
-			}
+	public MySQLDaoManager(String host, String username, String password, String database) {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");
+			conn = DriverManager.getConnection(  
+			"jdbc:mysql://"+host+":3306/"+database+"?characterEncoding=latin1",username,password);
+		}
 			catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -37,6 +39,15 @@ public class MySQLDaoManager implements DAOManager{
 		
 		}
 		return proyecto;
+	}
+	
+	@Override
+	public SocioDAO getSocioDAO() {
+		if(socio == null)
+		{
+		socio = new MySQLSocioDAO(conn);
+		}
+		return socio;
 	}
 	
 	@Override

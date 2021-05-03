@@ -1,6 +1,7 @@
 package p5dgm.main;
 
-
+import java.io.IOException;
+import java.sql.*;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -172,22 +173,61 @@ public class Main {
                 		int idProyectoEliminar = Integer.parseInt(scanEliminarProyecto.nextLine());	
                 		DAOeliminarP.eliminar(idProyectoEliminar);
                         break;
-                    
+                    */
                     case 9:
                         System.out.println("Has seleccionado la opcion 9");
+                        System.out.println("1.SQL\n2.XML");
+                        opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Socio nuevo = nuevoSocio();
+                            man.getSocioDAO().insertar(nuevo);
+                            break;
+                        }
+                        if(opcion2 == 2 ) {
                         SocioDAO DAOnuevoS = new XMLSocioDAO();
                         Socio nuevoS = nuevoSocio();
                         DAOnuevoS.insertar(nuevoS);
                         break;
+                        }
+                       break;
                        
                     case 10:
                         System.out.println("Has seleccionado la opcion 10");
+                        System.out.println("1.SQL\n2.XML");
+                        opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Socio modificar = modificarSocio();
+                            man.getSocioDAO().modificar(modificar);
+                            break; 
+                        }
+                        if(opcion2 == 2 ) {
                         SocioDAO DAOmodificarS = new XMLSocioDAO();
                         Socio modificarS  = modificarSocio();
                         DAOmodificarS.modificar(modificarS);
                         break;
+                        }
+                        break;
+                        
                     case 11:
                     	System.out.println("Has seleccionado la opcion 11");
+                    	System.out.println("1.SQL\n2.XML");
+                    	opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Scanner scanObtenerSociosql = new Scanner(System.in);
+                            System.out.println("Introduzca el id a obtener: ");
+                            int idSocioObtenersql = Integer.parseInt(scanObtenerSociosql.nextLine());
+                            Socio obtenersql = man.getSocioDAO().obtener(idSocioObtenersql);
+                            if (obtenersql == null) {
+                    			break;
+                    		}
+                    		else {
+                    			System.out.println("\nId: " + obtenersql.getIdSocio() + "\nNombre: " + obtenersql.getNombreSocio());
+                        		System.out.println("\nDireccion: " + obtenersql.getDireccion()+"Telefono: " + obtenersql.getTelefono() + "\nDelegación: " + obtenersql.getDelegacion());
+                        		System.out.println("\nTipoCuota: " + obtenersql.getTipoCuota()+"ImporteCuota: " + obtenersql.getImporteCuota() + "\n");
+                                break;
+                    		}	 
+                        }
+                        if(opcion2 == 2 ) {
                         SocioDAO daoObtenerSocio = new XMLSocioDAO();
                         Scanner scanObtenerSocio = new Scanner(System.in);
                         System.out.println("Introduzca el id a obtener: ");
@@ -202,15 +242,28 @@ public class Main {
                     		System.out.println("Telefono: " + obtenerS.getTelefono() + "\nTipo de Cuota: " + obtenerS.getTipoCuota() + "\nImporte de la cuota: " + obtenerS.getImporteCuota() +"\n");
                             break;
                 		}
+                	}
+                    break;
+                    
                     case 12:
                     	System.out.println("Has seleccionado la opcion 12");
+                    	System.out.println("1.SQL\n2.XML");
+                    	opcion2 = sn.nextInt();
+                        if(opcion2 == 1) {
+                        	Scanner scanEliminarSocio = new Scanner(System.in);
+                    		System.out.println("Introduzca el id a eliminar: ");
+                    		int idSocioEliminar = Integer.parseInt(scanEliminarSocio.nextLine());
+                            man.getSocioDAO().eliminar(idSocioEliminar);
+                            break;
+                        }
+                        if(opcion2 == 2 ) {
                         SocioDAO DAOeliminarS = new XMLSocioDAO();
                         Scanner scanEliminarSocio = new Scanner(System.in);
                 		System.out.println("Introduzca el id a eliminar: ");
                 		int idSocioEliminar = Integer.parseInt(scanEliminarSocio.nextLine());	
                 		DAOeliminarS.eliminar(idSocioEliminar);
                         break;
-                    */
+                        }
                     case 13:
                         salir = true;
                         break;
@@ -220,7 +273,10 @@ public class Main {
             } catch (InputMismatchException e) {
                 System.out.println("Debes insertar un nï¿½mero");
                 sn.next();
-            }
+            } catch (DAOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
         }
 	}
 	
@@ -359,8 +415,6 @@ public class Main {
 	
 	public static Socio nuevoSocio() {
 		Scanner scan = new Scanner(System.in);
-		System.out.println("Introduzca id:\n ");
-		int idSocio = Integer.parseInt(scan.nextLine());
 		System.out.println("Introduzca nombre y apellidos:\n ");
 		String nombre = scan.nextLine();
 		System.out.println("Introduzca la dirección: ");
@@ -374,7 +428,7 @@ public class Main {
 		System.out.println("Introduzca el importe de la cuota:");
 		float ImporteCuota = scan.nextFloat();
 	
-		Socio socio = new Socio(idSocio, nombre, direccion, telefono, delegacion, tipoCuota, ImporteCuota);
+		Socio socio = new Socio(nombre, direccion, telefono, delegacion, tipoCuota, ImporteCuota);
 		return socio;
 	}
 	

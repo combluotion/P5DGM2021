@@ -30,16 +30,21 @@ public class XMLSocioDAOTest {
 	}
 	
 	@Test
-	public void testInsertar() throws ParseException, DAOException {
+	public void testInsertar() throws ParseException, DAOException, IOException {
 		Socio socio = new Socio(1,"RAmon Gracia Serra","Calle Mayor 50","658965478","Madrid","menual",150);
 		SocioDAO socioDAO = new XMLSocioDAO();
-		socioDAO.insertar(socio);
-		assertTrue(true);
+		try {
+			socioDAO.insertar(socio);
+			assertTrue(true);
+		} catch (DAOException e){
+			e.printStackTrace();			
+			fail(e.getMessage());
+		}
 		
 	}
 
 	@Test
-	public void testModificar() throws ParseException, DAOException {
+	public void testModificar() throws ParseException, DAOException, IOException {
 		SocioDAO DAOmodificar = new XMLSocioDAO();
         Socio modificar  = new Socio(1,"RAmon Gracia Serra","Calle Mayor 50","658965478","Madrid","trimestral",550);
         DAOmodificar.modificar(modificar);
@@ -47,3 +52,5 @@ public class XMLSocioDAOTest {
 	}
 
 }
+
+	

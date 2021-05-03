@@ -3,6 +3,7 @@ package p5dgm.dao.xml;
 import static org.junit.Assert.*;
 
 import java.io.IOException;
+import p5dgm.dao.DAOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Scanner;
@@ -26,10 +27,6 @@ public class XMLEquipoDAOTest {
 	public void tearDown() throws Exception {
 	}
 
-	@Test
-	public void testInsertar() throws ParseException, DAOException {
-		Equipo equipo = new Equipo("Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
-		EquipoDAO equipoDAO = new XMLEquipoDAO();
 		equipoDAO.insertar(equipo);
 		assertTrue(true);
 		
@@ -37,10 +34,20 @@ public class XMLEquipoDAOTest {
 
 	@Test
 	public void testModificar() throws ParseException, DAOException {
+<<<<<<< HEAD
 		Equipo equipo = new Equipo("Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
+=======
+		Equipo equipo = new Equipo(1,"Proyecto1",new SimpleDateFormat("dd/MM/yyyy").parse("13/08/1995"),"Importante","Italia","Ripollet");
+>>>>>>> refs/remotes/origin/Mc_producto3
 		EquipoDAO equipoDAO = new XMLEquipoDAO();
+<<<<<<< HEAD
         equipoDAO.modificar(equipo);
 		assertTrue(true);
+=======
+     	equipoDAO.modificar(equipo);
+		assertTrue(true);
+		
+>>>>>>> refs/remotes/origin/Mc_producto3
 	}
 
 	@Test
@@ -60,6 +67,10 @@ public class XMLEquipoDAOTest {
         EquipoDAO DAOeliminar = new XMLEquipoDAO();
 		DAOeliminar.eliminar(1);
 		assertTrue(true);
+<<<<<<< HEAD
+=======
+		
+>>>>>>> refs/remotes/origin/Mc_producto3
 	}
 
 }

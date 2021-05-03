@@ -16,5 +16,8 @@ public class DAOException extends Exception {
 		super(message, cause);
 		// TODO Auto-generated constructor stub
 	}
+<<<<<<< HEAD
 
+=======
+>>>>>>> refs/remotes/origin/Mc_producto3
 }
